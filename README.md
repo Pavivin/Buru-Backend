@@ -1,9 +1,4 @@
-# Пример Backend на Python
-Асинхронный сервис на FastAPI с использованием сырых SQL-запросов
-
-Api развернут по адресу __hack-club-back.herokuapp.com__  
-Swagger/OpenAPI документация находится в __/docs__
-
+# Backend для https://github.com/Dragonite24/Buru-messenger
 ## Запуск Linux / Mac
 
 ```console
