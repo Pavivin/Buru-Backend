@@ -2,16 +2,15 @@ import uuid
 
 from fastapi import APIRouter, Request
 from queries.login import get_password, register_user, user_exist, user_from_login
+from routes.schema.login import LoginSchema
 from services.jwt_auth import AccessTokenPayload, create_token
 from utils.password import check_password_hash, create_password_hash
-
-from .schema.login import LoginSchema
 
 login_router = APIRouter()
 
 
 @login_router.post('/login')
-async def login(request: Request, schema: LoginSchema) -> str:
+async def login(request: Request, body: LoginSchema) -> str:
     record = await request.json()
     username = record.get('username')
     user_password = record.get('user_password')
@@ -30,7 +29,7 @@ async def login(request: Request, schema: LoginSchema) -> str:
 
 
 @login_router.post('/registration')
-async def registration(request: Request, schema: LoginSchema) -> str:
+async def registration(request: Request, body: LoginSchema) -> str:
     record = await request.json()
     username = record.get('username')
     user_password = record.get('user_password')

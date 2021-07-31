@@ -4,10 +4,12 @@ from services.db import DB
 from routes.schema.news import NewsResponseSchema
 
 
-async def select_news() -> NewsResponseSchema:
+async def select_news() -> NewsResponseSchema.json:
     query = """
-        select id, topic, main_text, img_link, user_id
-        from news
+        select n.id, n.topic, n.main_text, n.img_link, u.username
+        from news n
+        join users u
+        on n.user_id = u.id
     """
     news = await DB.conn.fetch(query)
 

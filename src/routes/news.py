@@ -4,7 +4,7 @@ from queries.news import post_news, select_news
 from utils.auth_bearer import JWTBearer
 from utils.user_id import id_from_token
 
-from routes.schema.news import NewsRequestSchema, NewsResponseSchema
+from .schema.news import NewsRequestSchema, NewsResponseSchema
 
 news_router = APIRouter()
 
@@ -15,7 +15,7 @@ async def get_news() -> dict:
 
 
 @news_router.post('/feed', dependencies=[Depends(JWTBearer())], description='NewsSchema')
-async def add_news(request: Request, schema: NewsRequestSchema) -> str:
+async def add_news(request: Request, body: NewsRequestSchema) -> str:
     resp: dict = await request.json()
     user_id = id_from_token(request)
     main_text = resp.get('main_text')

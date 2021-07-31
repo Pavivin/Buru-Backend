@@ -1,10 +1,12 @@
 from fastapi import FastAPI
+from middlewares import setup_middlewares
 
 from routes import setup_routes
 from services.db import DB
 
 app = FastAPI()
 setup_routes(app)
+setup_middlewares(app)
 
 
 @app.on_event("startup")

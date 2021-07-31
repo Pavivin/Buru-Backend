@@ -19,3 +19,8 @@ SECRET_KEY: str = os.getenv('SECRET_KEY', '1234')
 ALGORITHMS_JWT: str = os.getenv('ALGORITHMS_JWT')
 
 HASH_NAME: str = os.getenv('HASH_NAME')
+
+
+origins = [
+    '*'
+]

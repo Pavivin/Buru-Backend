@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Request
 from fastapi.params import Depends
 from queries.profile import select_user, update_user_info
-from routes.schema.profile import ProfileSchema
 from utils.auth_bearer import JWTBearer
 from utils.user_id import id_from_token
+
+from .schema.profile import ProfileSchema
 
 profile_router = APIRouter()
 
@@ -15,7 +16,7 @@ async def get_profile(request: Request) -> str:
 
 
 @profile_router.put('/profile', dependencies=[Depends(JWTBearer())])
-async def put_profile(request: Request, schema: ProfileSchema) -> str:
+async def put_profile(request: Request, body: ProfileSchema) -> str:
     user_id = id_from_token(request)
     resp = await request.json()
     username = resp.get('username')

@@ -7,7 +7,7 @@ from pydantic import BaseModel, validator
 class NewsResponseItem(BaseModel):
     id: Union[str, UUID]
     main_text: str
-    user_id: Union[str, UUID]
+    username: str
     topic: Optional[str] = None
     img_link: Optional[str] = None
 
