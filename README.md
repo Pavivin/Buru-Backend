@@ -1,4 +1,4 @@
-# Backend для https://github.com/Dragonite24/Buru-messenger
+# Backend для [Buru messenger](https://github.com/Dragonite24/Buru-messenger)
 ## Запуск Linux / Mac
 
 ```console
