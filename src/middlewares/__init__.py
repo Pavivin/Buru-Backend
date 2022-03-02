@@ -1,12 +1,13 @@
-from fastapi.applications import FastAPI
+from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from settings import origins
+
+from config import config
 
 
-def setup_middlewares(app: FastAPI):
+def setup_middlewares(app: FastAPI) -> None:
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=origins,
+        allow_origins=config.origins,
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
